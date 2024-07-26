@@ -56,8 +56,8 @@ class AccountWindow(QMainWindow):
        
         self.ChangePasswordtext.hide()
         self.label_chp.hide()
-        self.NewPasswordText.hide()  # Initially hide the new password textbox
-        self.isChangePasswordState = False  # Flag to track the state of the change password button
+        self.NewPasswordText.hide()
+        self.isChangePasswordState = False 
         
         self.TimePressed  = []
         self.TimeReleased = []
@@ -200,12 +200,6 @@ class AccountWindow(QMainWindow):
         
         correct_characters = len(self.String)
         self.typing_accuracy = round(correct_characters /len(self.total_characters),2) if len(self.total_characters) > 0 else 0
-
-        
-        # print(len(self.total_characters))
-        # print(total_time)
-        # print(self.typing_speed)
-        # print(self.typing_accuracy)
 
         
         value = min(self.TimePressed) 
@@ -359,7 +353,6 @@ class AccountWindow(QMainWindow):
 
             # print(count_ones)
 
-            # print(score,score1,score2,score3,score4)
             mean_f1 = round((score+score1+score2+score3+score4)/5,2)
             # norm_f1 = round((mean_f1/max(score,score1,score2,score3,score4)),2)
             norm_acc = round(self.typing_accuracy/max(self.Accounts[self.ID].typing_accuracy),2)
@@ -370,18 +363,10 @@ class AccountWindow(QMainWindow):
             else:
                 norm_speed = 0
 
-            # print("Normf1 = "+str(norm_f1))
-            # print(self.Accounts[self.ID].typing_speed)
-            # print("meanf1: " + str(mean_f1))
-            # print(round((sum(self.Accounts[self.ID].typing_accuracy)//len(self.Accounts[self.ID].typing_accuracy))/max(self.Accounts[self.ID].typing_accuracy),2))
-            # print(round((sum(self.Accounts[self.ID].typing_speed)//len(self.Accounts[self.ID].typing_speed))/max(self.Accounts[self.ID].typing_speed),2))
             model_pred = round(pred_res/5,2)
             # print(model_pred)
             normacc2 = round((sum(self.Accounts[self.ID].typing_accuracy)//len(self.Accounts[self.ID].typing_accuracy))/max(self.Accounts[self.ID].typing_accuracy),2)
             normspeed2 = round((sum(self.Accounts[self.ID].typing_speed)//len(self.Accounts[self.ID].typing_speed))/max(self.Accounts[self.ID].typing_speed),2)
-            # print("Avg Combined val: " + str(((norm_f1 + normacc2 + normspeed2)/3)))
-            # print(norm_speed)
-            # print(norm_acc)
 
             if pred_res > 2:
                 model_decision = "Accepted"
@@ -538,11 +523,7 @@ class AccountWindow(QMainWindow):
                     self.Reset()
 
 
-        
 
-    
-         
-         
 
 
 app = QApplication(argv)
